@@ -2,6 +2,7 @@ $(document).on('pagecreate','#home',function(){
 
   $('#upload').on('submit',function(e){
       e.preventDefault();
+      $('.searchresult').empty();
       $('#progressbar').css('display','block');
       //var c = 0;
       //var interval = setInterval(function(){
@@ -32,7 +33,7 @@ $(document).on('pagecreate','#home',function(){
                      console.log(data);
 
                      var t = '';
-                    t+= '<label> Error Uploading File.. Please try again ! </labe>';
+                    t+= '<label> Error Uploading File.. Please try again ! </label>';
                     $('.searchresult').html(t);
 
                      $('#progressbar').css('display','none');
@@ -90,10 +91,13 @@ $(document).on('pagecreate','#home',function(){
       else if(sorted.indexOf("rambutan") >= 0){
          viewdata("Rambutan","Nephelium lappaceum");
       }
-      else if(sorted.indexOf("citrus") >= 0 || sorted.indexOf("calamondin") >= 0){
+      else if(sorted.indexOf("calamondin") >= 0){
          viewdata("Calamondin (Kalamansi)","Fortunella japonica");
       }
-      else if(sorted.indexOf("citrus") >= 0 || sorted.indexOf("Tangerine") >= 0){
+      else if(sorted.indexOf("tangerine") >= 0){
+         viewdata("Tangerine (Dalanghita)","Citrus tangerina");
+      }
+      else if(sorted.indexOf("orange") >= 0 && sorted.indexOf("fruit") >= 0){
          viewdata("Tangerine (Dalanghita)","Citrus tangerina");
       }
       else if(sorted.indexOf("star") >= 0 && sorted.indexOf("apple") >= 0){
@@ -102,7 +106,7 @@ $(document).on('pagecreate','#home',function(){
       else if(sorted.indexOf("mangosteen") >= 0){
          viewdata("Mangosteen","Garcinia mangostana");
       }
-      else if(sorted.indexOf("citrus") >= 0 || sorted.indexOf("pomelo") >= 0){
+      else if(sorted.indexOf("pomelo") >= 0){
          viewdata("Pomelo (Suha)","Citrus maxima");
       }
       else {
