@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fruit Recognition</title>
+    <script type="text/javascript" charset="utf-8" src="js/google.jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/jquery-mobile.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/script.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/camera.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/jquery-mobile.css" />
+  </head>
+  <body>
+    <div data-role="page" id="home">
+      <div data-role="header" data-theme="b">
+        <h2>Fruit Recognition <code>beta</code></h2> 
+      </div>
+
+      <div data-role="main" class="content">
+        <button class="ui-btn" onclick="capturePhoto();">Capture Photo</button>
+        <!--button class="ui-btn" onclick="capturePhotoEdit();">Capture Editable Photo</button-->
+        <button class="ui-btn" onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button>
+        <!--button class="ui-btn" onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button-->
+        <!--button class="ui-btn" onclick="uploadPhoto(pictureSource.PHOTOLIBRARY);">Upload Photo</button-->
+        <form id="upload" action="" method="get" enctype="multipart/form-data">
+            Select image to upload:
+            <input type="file" name="file" id="file">
+            <input type="submit" class="ui-btn submit" name="submit" value="Upload Photo" />
+        </form>
+        <div align="center">
+          <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
+          <img style="display:none;" id="largeImage" src="" />
+        </div>
+
+        <button class="ui-btn" onclick="exitapp()">Exit</button>
+        <div class="searchresult">
+                <!--h3>Generic Name: <label id="fruit_name">Default Fruit</label></h3-->
+                <!--h3>Scientific Name: <label id="scientific">Scientifica Eclabo</label></h3-->
+        </div>
+        <div id="message"></div>
+
+
+        <div style="display:none;" align="center" id="progressbar">
+          <img src="img/ajax-loader.gif" />
+          <label>Loading ...</label>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+
+<!--script type="text/javascript" charset="utf-8" src="js/jquery.fileupload.js"></script-->
