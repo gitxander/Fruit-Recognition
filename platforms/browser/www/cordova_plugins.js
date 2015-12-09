@@ -3,6 +3,7 @@ module.exports = [
     {
         "file": "plugins/org.apache.cordova.camera/www/CameraConstants.js",
         "id": "org.apache.cordova.camera.Camera",
+        "pluginId": "org.apache.cordova.camera",
         "clobbers": [
             "Camera"
         ]
@@ -10,6 +11,7 @@ module.exports = [
     {
         "file": "plugins/org.apache.cordova.camera/www/CameraPopoverOptions.js",
         "id": "org.apache.cordova.camera.CameraPopoverOptions",
+        "pluginId": "org.apache.cordova.camera",
         "clobbers": [
             "CameraPopoverOptions"
         ]
@@ -17,6 +19,7 @@ module.exports = [
     {
         "file": "plugins/org.apache.cordova.camera/www/Camera.js",
         "id": "org.apache.cordova.camera.camera",
+        "pluginId": "org.apache.cordova.camera",
         "clobbers": [
             "navigator.camera"
         ]
@@ -24,6 +27,7 @@ module.exports = [
     {
         "file": "plugins/org.apache.cordova.camera/src/browser/CameraProxy.js",
         "id": "org.apache.cordova.camera.CameraProxy",
+        "pluginId": "org.apache.cordova.camera",
         "runs": true
     }
 ];

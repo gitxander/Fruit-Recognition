@@ -6,7 +6,7 @@
     <script type="text/javascript" charset="utf-8" src="js/jquery-mobile.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/script.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/camera.js"></script>
-    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <!--script type="text/javascript" charset="utf-8" src="cordova.js"></script-->
     <link rel="stylesheet" type="text/css" href="css/jquery-mobile.css" />
   </head>
   <body>
@@ -18,7 +18,7 @@
       <div data-role="main" class="content">
         <button class="ui-btn" onclick="capturePhoto();">Capture Photo</button>
         <!--button class="ui-btn" onclick="capturePhotoEdit();">Capture Editable Photo</button-->
-        <button class="ui-btn" onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button>
+        <!--button class="ui-btn" onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button-->
         <!--button class="ui-btn" onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button-->
         <!--button class="ui-btn" onclick="uploadPhoto(pictureSource.PHOTOLIBRARY);">Upload Photo</button-->
         <form id="upload" action="" method="get" enctype="multipart/form-data">
@@ -32,12 +32,11 @@
         </div>
 
         <button class="ui-btn" onclick="exitapp()">Exit</button>
-        <div class="searchresult">
+        <div class="searchresult" align="center">
                 <!--h3>Generic Name: <label id="fruit_name">Default Fruit</label></h3-->
                 <!--h3>Scientific Name: <label id="scientific">Scientifica Eclabo</label></h3-->
         </div>
         <div id="message"></div>
-
 
         <div style="display:none;" align="center" id="progressbar">
           <img src="img/ajax-loader.gif" />
