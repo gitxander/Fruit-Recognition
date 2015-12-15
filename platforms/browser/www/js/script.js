@@ -2,6 +2,7 @@ $(document).on('pagecreate','#menu',function(){
   $('#btnscan').on('tap',function(){
     $.mobile.changePage('#scan',{transition: 'pop',changeHash: false});
   });
+
 });
 
 $(document).on('pagecreate','#scan',function(){
@@ -14,40 +15,45 @@ $(document).on('pagecreate','#scan',function(){
       //var interval = setInterval(function(){
         //c++;
         //console.log(c);
-        //if(c == 5){
+        //if(c == 2){
+          //testdata('sugar apple');
           //clearInterval(interval);
-          console.log($('#file').val());
+          //console.log($('#file').val());
           //var url = 'http://localhost:8027/public_html/camfind/ajax_upload.php';
-          var url = 'http://raveteam.net/camfind/ajax_upload.php';
+            var url = 'http://raveteam.net/camfind/ajax_upload.php';
 
-              $('#message').empty();
-              $.ajax({
-                   url: url,
-                   type: 'POST',
-                   data: new FormData(this),
-                   contentType: false,
-                   crossDomain: true,
-                   cache: false,
-                   processData: false,
-                   dataType: 'json',
-                   success: function(data){
-                     console.log(data);
-                     testdata(data['fruitname']);
-                   },
-                   error: function(data){
-                     console.log('Error');
-                     console.log(data);
+                $('#message').empty();
+                $.ajax({
+                     url: url,
+                     type: 'POST',
+                     data: new FormData(this),
+                     contentType: false,
+                     crossDomain: true,
+                     cache: false,
+                     processData: false,
+                     dataType: 'json',
+                     success: function(data){
+                       console.log(data);
+                       testdata(data['fruitname']);
+                     },
+                     error: function(data){
+                       console.log('Error');
+                       console.log(data);
 
-                     var t = '';
-                    t+= '<label> Error Uploading File.. Please try again ! </label>';
-                    $('.searchresult').html(t);
+                       var t = '';
+                      t+= '<label> Error Uploading File.. Please try again ! </label>';
+                      $('.searchresult').html(t);
 
-                     $('#progressbar').css('display','none');
-                   }
-                 });
-      //  }
+                       $('#progressbar').css('display','none');
+                     }
+                   });
+        //}
       //},1000);
     });
+
+  $('#scancel').on('tap',function(){
+    location.reload();
+  });
 
     function testdata(fruitname){
       console.log(fruitname);
@@ -100,10 +106,7 @@ $(document).on('pagecreate','#scan',function(){
       else if(sorted.indexOf("calamondin") >= 0){
          viewdata("Calamondin (Kalamansi)","Fortunella japonica","scan/list/calamansi.html");
       }
-      else if(sorted.indexOf("tangerine") >= 0){
-         viewdata("Tangerine (Dalanghita)","Citrus tangerina","scan/list/tangerine.html");
-      }
-      else if(sorted.indexOf("orange") >= 0 && sorted.indexOf("fruit") >= 0){
+      else if((sorted.indexOf("tangerine") >= 0) || sorted.indexOf("orange") >= 0 && sorted.indexOf("fruit") >= 0){
          viewdata("Tangerine (Dalanghita)","Citrus tangerina","scan/list/tangerine.html");
       }
       else if(sorted.indexOf("star") >= 0 && sorted.indexOf("apple") >= 0){
@@ -111,6 +114,21 @@ $(document).on('pagecreate','#scan',function(){
       }
       else if(sorted.indexOf("pomelo") >= 0){
          viewdata("Pomelo (Suha)","Citrus maxima","scan/list/pomelo.html");
+      }
+      else if(sorted.indexOf("melon") >= 0){
+         viewdata("Melon (Milon)","Cucumis Melo","scan/list/melon.html");
+      }
+      else if(sorted.indexOf("cotton") >= 0 && sorted.indexOf("fruit") >= 0){
+         viewdata("Cotton Fruit (Santol)","Sandoricum Koetjape","scan/list/cottonfruit.html");
+      }
+      else if(sorted.indexOf("lanzones") >= 0){
+         viewdata("Lanzones (Lansones)","Lansium Domesticum","scan/list/lanzones.html");
+      }
+      else if(sorted.indexOf("sapodilla") >= 0){
+         viewdata("Chico (Tsiko)","Manailkara Zapota","scan/list/sapodilla.html");
+      }
+      else if(sorted.indexOf("durian") >= 0){
+         viewdata("Durian (Durian)","Durio","scan/list/durian.html");
       }
       else {
         var t = '';
@@ -123,9 +141,9 @@ $(document).on('pagecreate','#scan',function(){
     function viewdata(genericname,scientificname,link){
       if(typeof(genericname) != 'undefined' || genericname != "" ) {
         var t = '';
-        t+= '<h3>Generic Name: <label id="fruit_name">'+genericname+'</label></h3>';
-        t+= '<h3>Scientific Name: <label id="science_name">'+scientificname+'</label></h3>';
-        t+= '<a href="'+link+'" rel="external" class="ui-btn" data-role="button">View Data</a>';
+        t+= '<label id="fruit_name"> Generic Name: '+genericname+'</label>';
+        //t+= '<h3>Scientific Name: <label id="science_name">'+scientificname+'</label></h3>';
+        t+= '<a href="'+link+'" rel="external" class="ui-btn ui-btn-inline ui-mini ui-corner-all" id="btnview" data-theme="b">View Data</a>';
         //$("#message").html(data['message']);
         $('.searchresult').html(t);
       }

@@ -28,12 +28,11 @@
     <div data-role="page" id="menu">
       <div data-role="main" class="content" id="mainmenu">
           <div id="btnmain">
-            <!--button class="btnmenu">Scan an Image</button-->
             <ul>
               <li><div class="btn" id="btnscan"></div></li>
-              <li><div class="btn" id="btnprode"></div></li>
-              <li><div class="btn" id="btnlist"></div></li>
-              <li><div class="btn" id="btnabout"></div></li>
+              <li><a rel="external" href="proc/index.html" data-change-hash="false"><div class="btn" id="btnprode"></div></a></li>
+              <li><a rel="external" href="sort/index.html" data-change-hash="false"><div class="btn" id="btnlist"></div></a></li>
+              <li><a rel="external" href="about/index.html" data-change-hash="false"><div class="btn" id="btnabout"></div></a></li>
             </ul>
           </div>
       </div>
@@ -41,38 +40,82 @@
 
     <!-- Scan Page -->
     <div data-role="page" id="scan">
-      <div data-role="header" data-theme="b">
-        <a href="#menu" data-icon="back" class="ui-btn ui-icon-back ui-btn-icon-notext ui-btn-corner-all">Back</a>
+      <!--div data-role="header" data-theme="b">
+        <a href="#menu" class="ui-btn ui-icon-back ui-btn-icon-notext ui-btn-corner-all">Back</a>
         <h2>Fruit Recognition <code>beta</code></h2>
-      </div>
+      </div-->
 
-      <div data-role="main" class="content">
-        <button class="ui-btn" onclick="snapPicture();">Capture Photo</button>
-        <!--button class="ui-btn" onclick="capturePhotoEdit();">Capture Editable Photo</button-->
-        <!--button class="ui-btn" onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button-->
-        <!--button class="ui-btn" onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button-->
-        <!--button class="ui-btn" onclick="uploadPhoto(pictureSource.PHOTOLIBRARY);">Upload Photo</button-->
-        <form id="upload" action="" method="get" enctype="multipart/form-data">
-            Select image to upload:
-            <input type="file" name="file" id="file">
-            <input type="submit" class="ui-btn submit" name="submit" value="Upload Photo" />
-        </form>
-        <!--button class="ui-btn" onclick="exitapp()">Exit</button-->
-        <div align="center">
+      <div data-role="main" class="content" id="mainscan">
+        <div class="scanning">
+          <a href="#menu" class="ui-btn ui-icon-back ui-btn-icon-notext ui-btn-corner-all ui-btn-inline">Back</a>
+          <a href="#fruitlist" class="ui-btn ui-icon-bullets ui-btn-icon-notext ui-btn-corner-all ui-btn-inline">List</a>
+          <input type="submit" class="ui-btn ui-btn-inline" onclick="snapPicture();" data-theme="b" value="Capture Photo" />
+          <form id="upload" action="" method="get" enctype="multipart/form-data">
+              Select image to upload:
+              <input type="file" name="file" id="file" class="ui-btn ui-btn-inline">
+              <input type="submit" class="ui-btn submit" data-theme="b" name="submit" value="Upload Photo" />
+          </form>
+          <!--button class="ui-btn" onclick="exitapp()">Exit</button-->
+
+          <div class="searchresult" align="center">
+          </div>
+          <div id="message"></div>
+          <div style="display:none;" align="center" id="progressbar">
+            <img src="img/ajax-loader.gif" />
+            <label>Scanning ... <button id="scancel" class="ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-corner-all">Cancel</button></label>
+          </div>
+        </div>
+
+        <div class="capture">
           <img style="display:none;width:100px;height:120px;" id="smallImage" src="" />
-          <img style="display:none;" id="largeImage" src="" />
         </div>
-        <div class="searchresult" align="center">
-                <!--h3>Generic Name: <label id="fruit_name">Default Fruit</label></h3-->
-                <!--h3>Scientific Name: <label id="scientific">Scientifica Eclabo</label></h3-->
-        </div>
-        <div id="message"></div>
-        <div style="display:none;" align="center" id="progressbar">
-          <img src="img/ajax-loader.gif" />
-          <label>Scanning ...</label>
-        </div>
+
       </div>
     </div>
+
+
+    <div data-role="page" id="fruitlist">
+      <div data-role="main" class="content">
+            <label>Fruit List</label>
+            <ul data-role="listview" data-theme="b">
+              <li><a href="scan/list/applesugar.html" rel="external">Apple Sugar</a></li>
+              <li><a href="scan/list/avocado.html" rel="external">Avocado</a></li>
+              <li><a href="scan/list/banana.html" rel="external">Banana</a></li>
+              <li><a href="scan/list/batuan.html" rel="external">Batuan</a></li>
+              <li><a href="scan/list/breadfruit.html" rel="external">Breadfruit</a></li>
+              <li><a href="scan/list/calamansi.html" rel="external">Calamansi</a></li>
+              <li><a href="scan/list/coconut.html" rel="external">Coconut</a></li>
+              <li><a href="scan/list/corn.html" rel="external">Corn</a></li>
+              <li><a href="scan/list/cottonfruit.html" rel="external">Cotton Fruit</a></li>
+              <li><a href="scan/list/custardapple.html" rel="external">Custard Apple</a></li>
+              <li><a href="scan/list/dragonfruit.html" rel="external">Dragon Fruit</a></li>
+              <li><a href="scan/list/durian.html" rel="external">Durian</a></li>
+              <li><a href="scan/list/galonut.html" rel="external">Galonut</a></li>
+              <li><a href="scan/list/gooseberry.html" rel="external">Gooseberry</a></li>
+              <li><a href="scan/list/guava.html" rel="external">Guava</a></li>
+              <li><a href="scan/list/hagis.html" rel="external">Hagis</a></li>
+              <li><a href="scan/list/jackfruit.html" rel="external">Jackfruit</a></li>
+              <li><a href="scan/list/jambolanplum.html" rel="external">Jambolan plum</a></li>
+              <li><a href="scan/list/lanzones.html" rel="external">Lanzones</a></li>
+              <li><a href="scan/list/lime.html" rel="external">Lime</a></li>
+              <li><a href="scan/list/mango.html" rel="external">Mango</a></li>
+              <li><a href="scan/list/marang.html" rel="external">Marang</a></li>
+              <li><a href="scan/list/melon.html" rel="external">Melon</a></li>
+              <li><a href="scan/list/pineapple.html" rel="external">Pineapple</a></li>
+              <li><a href="scan/list/pomelo.html" rel="external">Pomelo</a></li>
+              <li><a href="scan/list/queenslandcherry.html" rel="external">Queensland Cherry</a></li>
+              <li><a href="scan/list/rambutan.html" rel="external">Rambutan</a></li>
+              <li><a href="scan/list/sapodilla.html" rel="external">Sapodilla</a></li>
+              <li><a href="scan/list/snakefruit.html" rel="external">Snakefruit</a></li>
+              <li><a href="scan/list/starapple.html" rel="external">Star Apple</a></li>
+              <li><a href="scan/list/tangerine.html" rel="external">Tangerine</a></li>
+              <li><a href="scan/list/watermelon.html" rel="external">Water Melon</a></li>
+              <li><a href="scan/list/wildraspberry.html" rel="external">Wild Raspberry</a></li>
+              <li><a href="scan/list/wildsweetsop.html" rel="external">Wild Sweet Sop</a></li>
+            </ul>
+      </div>
+    </div>
+
   </body>
 </html>
 

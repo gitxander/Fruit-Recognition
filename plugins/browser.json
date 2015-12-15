@@ -21,7 +21,7 @@
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.kirshnertech.cam"
         },
-        "org.apache.cordova.camera": {
+        "cordova-plugin-camera": {
             "PACKAGE_NAME": "com.kirshnertech.cam"
         }
     },

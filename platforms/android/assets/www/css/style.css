@@ -2,10 +2,28 @@
   background:url('../img/background.jpg') no-repeat center center fixed; background-size:cover
 }
 
+#scan {
+  background:url('../img/scan_an_image.png') no-repeat center center fixed; background-size:cover
+}
+
 #btnmain {
-  margin-top: 35%;
+  margin-top: 40%;
   align: center;
-   margin-left: 30px;
+  margin-left: 30px;
+}
+
+.scanning {
+  margin-top: 40%;
+  align: center;
+}
+
+.capture {
+  margin-top: 5%;
+  margin-left:  20px;
+}
+
+#btnview {
+  align: center;
 }
 
 #btnscan{

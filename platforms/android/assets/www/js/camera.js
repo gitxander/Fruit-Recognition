@@ -118,7 +118,7 @@
   }
 
   function snapPicture() {
-      //alert('Launching System Camera');
+      alert('Launching System Camera');
       navigator.camera.getPicture (onSuccess, onFail,
           { quality: 100,
             sourceType: navigator.camera.PictureSourceType.CAMERA,
@@ -139,6 +139,6 @@
 
       //A callback function when snapping picture is fail.
       function onFail (message) {
-          console.log('Error occured: ' + message);
+          alert('Error occured: ' + message);
       }
   }
