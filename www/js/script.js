@@ -1,4 +1,11 @@
-$(document).on('pagecreate','#home',function(){
+$(document).on('pagecreate','#menu',function(){
+  $('#btnscan').on('tap',function(){
+    $.mobile.changePage('#scan',{transition: 'pop',changeHash: false});
+  });
+
+});
+
+$(document).on('pagecreate','#scan',function(){
 
   $('#upload').on('submit',function(e){
       e.preventDefault();
@@ -50,82 +57,92 @@ $(document).on('pagecreate','#home',function(){
       for(var i=0;i<testarray.length;i++){
         sorted.push(testarray[i].toLowerCase());
       }
-      
-      if(sorted.indexOf("dragon") >= 0 && sorted.indexOf("fruit") >= 0){
+
+      if( (sorted.indexOf("dragon") >= 0 && sorted.indexOf("fruit") >= 0) || sorted.indexOf("dragonfruit") >= 0){
         //Dragon Fruit
-        viewdata("Dragon Fruit","Hylocereus undatus");
+        viewdata("Dragon Fruit","Hylocereus undatus","scan/list/dragonfruit.html");
       }
       else if(sorted.indexOf("jackfruit") >= 0) {
-        viewdata("Jackfruit (Langka)","Artocarpus heterophyllus");
+        viewdata("Jackfruit (Langka)","Artocarpus heterophyllus","scan/list/jackfruit.html");
       }
       else if(sorted.indexOf("pineapple") >= 0){
-        viewdata("Pineapple (Pinya)","Ananas comosus");
+        viewdata("Pineapple (Pinya)","Ananas comosus","scan/list/pineapple.html");
       }
       else if(sorted.indexOf("avocado") >= 0){
-         viewdata("Avocado","Persea americana");
+         viewdata("Avocado","Persea americana","scan/list/avocado.html");
       }
       else if(sorted.indexOf("banana") >= 0){
-         viewdata("Banana (Saging)","Musa acuminata or Musa balbisiana");
+         viewdata("Banana (Saging)","Musa acuminata or Musa balbisiana","scan/list/banana.html");
       }
       else if(sorted.indexOf("sugar") >= 0 && sorted.indexOf("apple") >= 0){
-        viewdata("Sugar Apple (Atis)","Annona squamosa");
+        viewdata("Sugar Apple (Atis)","Annona squamosa","scan/list/applesugar.html");
       }
       else if(sorted.indexOf("guava") >= 0){
-         viewdata("Guava (Bayabas)","Psidium guajava");
+         viewdata("Guava (Bayabas)","Psidium guajava","scan/list/guava.html");
       }
       else if(sorted.indexOf("corn") >= 0){
-         viewdata("Sweet Corn (Mais)","Zea mays");
+         viewdata("Sweet Corn (Mais)","Zea mays","scan/list/corn.html");
       }
       else if(sorted.indexOf("mango") >= 0){
-         viewdata("Mango (Manga)","Mangifera indica");
+         viewdata("Mango (Manga)","Mangifera indica","scan/list/mango.html");
       }
       else if(sorted.indexOf("coconut") >= 0){
-         viewdata("Coconut (Buko)","Cocos nucifera");
+         viewdata("Coconut (Buko)","Cocos nucifera","scan/list/coconut.html");
       }
       else if(sorted.indexOf("soursop") >= 0){
-         viewdata("Soursop (Guyabano)","Annona muricata");
+         viewdata("Soursop (Guyabano)","Annona muricata","scan/list/custardapple.html");
       }
       else if(sorted.indexOf("watermelon") >= 0){
-         viewdata("Watermelon (Pakwan)","Citrullus lanatus");
+         viewdata("Watermelon (Pakwan)","Citrullus lanatus","scan/list/watermelon.html");
       }
       else if(sorted.indexOf("rambutan") >= 0){
-         viewdata("Rambutan","Nephelium lappaceum");
+         viewdata("Rambutan","Nephelium lappaceum","scan/list/rambutan.html");
       }
       else if(sorted.indexOf("calamondin") >= 0){
-         viewdata("Calamondin (Kalamansi)","Fortunella japonica");
+         viewdata("Calamondin (Kalamansi)","Fortunella japonica","scan/list/calamansi.html");
       }
-      else if(sorted.indexOf("tangerine") >= 0){
-         viewdata("Tangerine (Dalanghita)","Citrus tangerina");
-      }
-      else if(sorted.indexOf("orange") >= 0 && sorted.indexOf("fruit") >= 0){
-         viewdata("Tangerine (Dalanghita)","Citrus tangerina");
+      else if((sorted.indexOf("tangerine") >= 0) || sorted.indexOf("orange") >= 0 && sorted.indexOf("fruit") >= 0){
+         viewdata("Tangerine (Dalanghita)","Citrus tangerina","scan/list/tangerine.html");
       }
       else if(sorted.indexOf("star") >= 0 && sorted.indexOf("apple") >= 0){
-         viewdata("Star Apple (Kaimito)","Chrysophyllum cainito");
-      }
-      else if(sorted.indexOf("mangosteen") >= 0){
-         viewdata("Mangosteen","Garcinia mangostana");
+         viewdata("Star Apple (Kaimito)","Chrysophyllum cainito","scan/list/starapple.html");
       }
       else if(sorted.indexOf("pomelo") >= 0){
-         viewdata("Pomelo (Suha)","Citrus maxima");
+         viewdata("Pomelo (Suha)","Citrus maxima","scan/list/pomelo.html");
+      }
+      else if(sorted.indexOf("melon") >= 0){
+         viewdata("Melon (Milon)","Cucumis Melo","scan/list/melon.html");
+      }
+      else if(sorted.indexOf("cotton") >= 0 && sorted.indexOf("fruit") >= 0){
+         viewdata("Cotton Fruit (Santol)","Sandoricum Koetjape","scan/list/cottonfruit.html");
+      }
+      else if(sorted.indexOf("lanzones") >= 0){
+         viewdata("Lanzones (Lansones)","Lansium Domesticum","scan/list/lanzones.html");
+      }
+      else if(sorted.indexOf("sapodilla") >= 0){
+         viewdata("Chico (Tsiko)","Manailkara Zapota","scan/list/sapodilla.html");
+      }
+      else if(sorted.indexOf("durian") >= 0){
+         viewdata("Durian (Durian)","Durio","scan/list/durian.html");
       }
       else {
         var t = '';
-        t+= '<label> Not Recognize! </label>';
+        t+= "<label> Can't Recognize! </label>";
         $('.searchresult').html(t);
       }
       $('#progressbar').css('display','none');
     }
 
-    function viewdata(genericname,scientificname){
+    function viewdata(genericname,scientificname,link){
       if(typeof(genericname) != 'undefined' || genericname != "" ) {
         var t = '';
-        t+= '<h3>Generic Name: <label id="fruit_name">'+genericname+'</label></h3>';
-        t+= '<h3>Scientific Name: <label id="science_name">'+scientificname+'</label></h3>';
+        t+= '<label id="fruit_name"> Generic Name: '+genericname+'</label>';
+        //t+= '<h3>Scientific Name: <label id="science_name">'+scientificname+'</label></h3>';
+        t+= '<a href="'+link+'" rel="external" class="ui-btn ui-btn-inline ui-mini ui-corner-all" id="btnview" data-theme="b">View Data</a>';
         //$("#message").html(data['message']);
         $('.searchresult').html(t);
       }
-      
+
     }
 
 

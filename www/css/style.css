@@ -1,0 +1,57 @@
+#menu {
+  background:url('../img/background.jpg') no-repeat center center fixed; background-size:cover
+}
+
+#scan {
+  background:url('../img/scan_an_image.png') no-repeat center center fixed; background-size:cover
+}
+
+#btnmain {
+  margin-top: 40%;
+  align: center;
+  margin-left: 30px;
+}
+
+.scanning {
+  margin-top: 40%;
+  align: center;
+}
+
+.capture {
+  margin-top: 5%;
+  margin-left:  20px;
+}
+
+#btnview {
+  align: center;
+}
+
+#btnscan{
+  background: url('../img/scan_button.png') no-repeat;
+  width: auto;
+  height: 70px;
+}
+
+#btnprode{
+  background: url('../img/procedure_button.png') no-repeat;
+  width: auto;
+  height: 70px;
+}
+
+#btnlist{
+  background: url('../img/list_button.png') no-repeat;
+  width: auto;
+  height: 70px;
+}
+
+#btnabout{
+  background: url('../img/about_button.png') no-repeat;
+  width: auto;
+  height: 70px;
+}
+
+div#btnmain ul li {
+  display: inline;
+}
+
+div#btnmain ul { list-style-type: none; padding: 0px; margin: 0px }

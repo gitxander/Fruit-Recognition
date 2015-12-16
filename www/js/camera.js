@@ -21,16 +21,16 @@
 
       // Get image handle
       //
-      var smallImage = document.getElementById('smallImage');
+      //var smallImage = document.getElementById('smallImage');
 
       // Unhide image elements
       //s
-      smallImage.style.display = 'block';
+      //smallImage.style.display = 'block';
 
       // Show the captured photo
       // The inline CSS rules are used to resize the image
       //
-      smallImage.src = "data:image/jpeg;base64," + imageData;
+      //smallImage.src = "data:image/jpeg;base64," + imageData;
     }
 
     // Called when a photo is successfully retrieved
@@ -117,8 +117,8 @@
     }
   }
 
-  function snapPicture () {
-      alert('Launching System Camera');
+  function snapPicture() {
+      //alert('Launching System Camera');
       navigator.camera.getPicture (onSuccess, onFail,
           { quality: 100,
             sourceType: navigator.camera.PictureSourceType.CAMERA,
@@ -127,13 +127,13 @@
             encodingType: navigator.camera.EncodingType.JPEG,
             correctOrientation: false,
             saveToPhotoAlbum: true
-           });
-
+      });
 
       //A callback function when snapping picture is success.
       function onSuccess (imageData) {
-          var image = document.getElementById ('largeImage');
-          //alert("path : "+imageData);
+          var image = document.getElementById ('smallImage');
+          alert("Image path : "+imageData);
+          image.style.display = 'block';
           image.src =  imageData;
       }
 
