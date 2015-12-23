@@ -23,7 +23,7 @@
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!-- primary: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -38,7 +38,7 @@
         <div  style="background-color:#990000"class="container">
             <div style="size:landscape;height:80px;" style="background-color:#990000;" class="navbar-header">
                 <button style="background-color:#FFFFFF" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                    <i class="fa fa-bars" style="color:black;"></i> 
+                    <i class="fa fa-bars" style="color:black;"></i>
                 </button>
                 <a class="navbar-brand page-scroll"  style="background-color:#990000;color:white;" href="#page-top">
 					<i class="fa fa-camera-retro"> </i> Fruit Recognizer <br>
@@ -60,8 +60,8 @@
                         <a class="page-scroll" href="#application">Application</a>
                     </li>
                     <li>
-                     <a class="page-scroll" href="../index.html#menu"> Back to Main</a>
-                    </li>				
+                     <a class="page-scroll"  href="../index.html#menu"> Back to Main</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -72,15 +72,15 @@
     <!-- Intro Header -->
 	<style>
 		.imgc{
-		
+
 			border:2px solid #fff;
 			box-shadow: 10px 10px 5px #ccc;
 			-moz-box-shadow: 10px 10px 5px #ccc;
 			-webkit-box-shadow: 10px 10px 5px #ccc;
-			-khtml-box-shadow: 10px 10px 5px #ccc; 
+			-khtml-box-shadow: 10px 10px 5px #ccc;
 		}
 	</style>
- 
+
     <!-- About Section -->
     <section id="developers" class="container content-section text-center">
         <img class="imgc" src="dev.png"><br>
@@ -90,24 +90,50 @@
 		<br>
 		Capstone 2015 - AMA Computer College
 		</p>
-		
+
 		<br><br><br>
 		<div style="background-color:khaki;border-radius:5px;box-shadow: 5px 5px 3px #888888;"> <br> <br>
 		<p><strong style="color:black;">Message <strong></p>
-		
+
 			<input class="form-control txt-name" type="text" placeholder="Name"> <br>
 			<input class="form-control txt-message" type="text" placeholder="Message"><br>
 			<button class="btn btn-primary btn-send"> Send </button> <br> <br>
-	
+
 		</div>
 		<br><br><br>
-		
+
     </section>
 
     <!-- Download Section -->
     <section id="application" class="content-section text-center">
 		<img class="imgc" src="app.jpg"> <br><br>
     </section>
+
+    <br />
+		<div class="container"  style="background-color:skyblue;border-radius:5px;box-shadow: 5px 5px 3px #888888;"> <br>
+		<p><strong style="color:black;"> <center>Application Requirements</center> <strong></p>
+
+			<label class="text-center"> The application is suitable and
+              Feasible as long as the device
+              has the minimum requirement,
+              which are the following:
+      </label>
+      <label><span class="label label-pill label-primary">Android OS:</span>
+        <ul>
+          <li>Kitkat</li>
+          <li>Lollipop</li>
+          <li>Marshmallow</li>
+        </ul>
+      </label>
+
+      <label><span class="label label-pill label-primary">Screen Resolution: </span> &nbsp atleast 360 x 640</label> <br />
+      <label><span class="label label-pill label-primary">Camera Pixel: </span> &nbsp 5-megapixel</label> <br />
+      <label><span class="label label-pill label-primary">RAM: </span> &nbsp minimum of 512 mb</label> <br />
+      <label><span class="label label-pill label-primary">Free Space: </span> &nbsp atleast 30 mb</label> <br />
+
+
+		</div>
+    <br /> <br />
 
  <!-- jQuery -->
     <script  src="js/jquery.js"></script>
@@ -118,13 +144,13 @@
     <!-- Plugin JavaScript -->
     <script src="js/jquery.easing.min.js"></script>
 
-    
+
 
     <!-- Custom Theme JavaScript -->
     <script src="js/grayscale.js"></script>
     <script>
 			$(document).ready(function(){
-			
+
 				var gUrlAjax = 'http://raveteam.net/camfind/lib/ajax.php';
 			$('.btn-send').click(function(){
 			var type = 'feedback';
@@ -137,16 +163,16 @@
 				var name = $('.txt-name').val('');
 				var name = $('.txt-message').val('');
 				},'JSON');
-		
+
 			}else{
 				alert('Fill all text fields');
 			}
-			
-						
+
+
 			});
-		 
-		});		
-	
+
+		});
+
 	</script>
 
 </body>

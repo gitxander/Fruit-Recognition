@@ -6,6 +6,7 @@ $(document).on('pagecreate','#menu',function(){
 });
 
 $(document).on('pagecreate','#scan',function(){
+  var db = openDatabase('dbama','1.0','Fruit DB',2 * 1024 * 1024);
 
   $('#upload').on('submit',function(e){
       e.preventDefault();
@@ -19,7 +20,7 @@ $(document).on('pagecreate','#scan',function(){
           //testdata('sugar apple');
           //clearInterval(interval);
           //console.log($('#file').val());
-          //var url = 'http://localhost:8027/public_html/camfind/ajax_upload.php';
+          // var url = 'http://localhost:8027/public_html/camfind/ajax_upload.php';
             var url = 'http://raveteam.net/camfind/ajax_upload.php';
 
                 $('#message').empty();
@@ -34,7 +35,8 @@ $(document).on('pagecreate','#scan',function(){
                      dataType: 'json',
                      success: function(data){
                        console.log(data);
-                       testdata(data['fruitname']);
+                       matchdata(data['fruitname']);
+                       //matchdata('red apple');
                      },
                      error: function(data){
                        console.log('Error');
@@ -55,6 +57,134 @@ $(document).on('pagecreate','#scan',function(){
     location.reload();
   });
 
+    //Searching to Database
+    //Method 1
+    function matchdata(fruitname) {
+      var sorted = [];
+      var testarray = fruitname.split(" ");
+      for(var x=0;x<testarray.length;x++) {
+        sorted.push(testarray[x].toLowerCase());
+      }
+
+      db.transaction(function(tx){
+        //Search Query
+        var listfruit = [];
+        var stats = [];
+        var gUrl = [];
+        tx.executeSql("SELECT fruitname,url,status as stat FROM fruitlist WHERE status != 0",[],function(tx,results){
+          var len = results.rows.length, i;
+          for(i=0;i<len;i++){
+            listfruit.push(results.rows.item(i).fruitname);
+            stats.push(results.rows.item(i).stat);
+            gUrl.push(results.rows.item(i).url);
+          }
+
+           var counttest = 0;
+           var fruitlength = '';
+           var getfruitname;
+           var getstatus;
+           var geturl;
+            for(var k=0;k < listfruit.length; k++){
+              counttest  = 0;
+              var getsplitfruit = listfruit[k].split(" ");
+              getfruitname = listfruit[k];
+              getstatus = stats[k];
+              geturl = gUrl[k];
+              if(getsplitfruit.length > 1) {
+                fruitlength = 'Multiple';
+                    for( var m=0;m < getsplitfruit.length;m++) {
+                      for(var s=0;s < sorted.length;s++) {
+                        if(sorted[s] == getsplitfruit[m]) {
+                          counttest++;
+                          //console.log('Data Founded : '+ counttest);
+                        }
+                      }
+                    }
+                    if(counttest > 1){
+                      break;
+                    }
+              }
+              else{
+                fruitlength = 'Standard';
+                for(var s=0;s<sorted.length;s++){
+                  if(sorted[s] == getsplitfruit[0]){
+                    //console.log('Data Found');
+                    counttest = 1;
+                    break;
+                  }
+                }
+                if(counttest > 0){
+                  break;
+                }
+              }
+
+            }
+            //end of loop
+            console.log(fruitlength);
+            console.log('Count Test:'+counttest);
+            switch (fruitlength) {
+              case 'Standard':
+                if(counttest == 1){
+                  resultdata(getstatus,getfruitname,geturl);
+                }
+                else {
+                  noresult();
+                }
+                break;
+              case 'Multiple':
+                if(counttest > 1){
+                  resultdata(getstatus,getfruitname,geturl);
+                }
+                else{
+                  noresult();
+                }
+              break;
+
+            }
+
+
+
+          //console.log(listfruit);
+        },null);
+      });
+    }
+
+
+    //View Result
+    function resultdata(getstatus,getfruitname,geturl){
+
+          console.log('Data Found');
+          if(getstatus == 1){
+            viewdata(getfruitname,geturl);
+          }
+          else {
+            var addedfruits = ['apple','strawberry','grapes','tamarind','star fruit'];
+            var tagalogfruits = ['Mansanas','Presa','Ubas','Sampalok','Balimbing'];
+            var scienfruits = ['Malus Domestica','Fragaria ananassa','Vitis Vinifera','Tamarindus Indica','Averrhoa Carmbola'];
+            for(var t=0;t<addedfruits.length;t++){
+              if(getfruitname == addedfruits[t]){
+                //console.log('Added');
+                nodata(getfruitname,tagalogfruits[t],scienfruits[t],geturl);
+                break;
+              }
+            }
+          }
+
+    }
+
+    //No Data Found
+    function noresult(){
+      $('#progressbar').css('display','none');
+      console.log('Not Match');
+      var t = '';
+      t+= "<label> Can't Recognize! </label>";
+      $('.searchresult').html(t);
+    }
+
+
+
+    //Manual Testing of Fruits
+    //Method 2
     function testdata(fruitname){
       console.log(fruitname);
       var sorted = [];
@@ -138,16 +268,32 @@ $(document).on('pagecreate','#scan',function(){
       $('#progressbar').css('display','none');
     }
 
-    function viewdata(genericname,scientificname,link){
+    function viewdata(genericname,link){
+      $('#progressbar').css('display','none');
       if(typeof(genericname) != 'undefined' || genericname != "" ) {
+        genericname = genericname.toUpperCase();
         var t = '';
         t+= '<label id="fruit_name"> Generic Name: '+genericname+'</label>';
-        //t+= '<h3>Scientific Name: <label id="science_name">'+scientificname+'</label></h3>';
         t+= '<a href="'+link+'" rel="external" class="ui-btn ui-btn-inline ui-mini ui-corner-all" id="btnview" data-theme="b">View Data</a>';
         //$("#message").html(data['message']);
         $('.searchresult').html(t);
       }
 
+    }
+
+    function nodata(genericname,tagalog,scientific,link){
+      $('#progressbar').css('display','none');
+      if(typeof(genericname) != 'undefined' || genericname != ""){
+        genericname = genericname.toUpperCase();
+        tagalog = tagalog.toUpperCase();
+        scientific = scientific.toUpperCase();
+        var t = '';
+        t+= '<label id="fruit_name">Generic Name: '+genericname +' ('+tagalog+')</label>';
+        t+= '<a href="'+link+'" rel="external" class="ui-btn ui-btn-inline ui-mini ui-corner-all" data-theme="b">View Data</a>';
+        $('.searchresult').html(t);
+
+
+      }
     }
 
 

@@ -2,18 +2,19 @@
 <html>
   <head>
     <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"/>
-    <title>Fruit Recognition</title>
+    <title>Fruit Recognizer</title>
     <script type="text/javascript" charset="utf-8" src="js/google.jquery.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/jquery-mobile.js"></script>
 
+    <script type="text/javascript" charset="utf-8" src="js/dbHelper.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/splash.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/script.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/camera.js"></script>
-    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <!--script type="text/javascript" charset="utf-8" src="cordova.js"></script-->
     <link rel="stylesheet" type="text/css" href="css/jquery-mobile.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
-  <body>
+  <body class="body_content">
     <!-- Splash Screen -->
     <div data-role="page" id="splash">
       <div data-role="main" class="content">
@@ -75,8 +76,11 @@
 
 
     <div data-role="page" id="fruitlist">
+      <div data-role="header">
+        <a href="#scan" class="ui-btn ui-icon-back ui-btn-icon-notext ui-btn-corner-all ui-btn-inline">Back</a>
+        <h2>Fruit List</h2>
+      </div>
       <div data-role="main" class="content">
-            <label>Fruit List</label>
             <ul data-role="listview" data-theme="b">
               <li><a href="scan/list/applesugar.html" rel="external">Apple Sugar</a></li>
               <li><a href="scan/list/avocado.html" rel="external">Avocado</a></li>
